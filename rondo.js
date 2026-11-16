@@ -13,7 +13,7 @@ var overrideSource = spreadsheetID;
    true  -> Google Sheets (Visualization API)
    false -> Local Excel file (rondo.xlsx) using XLSX
 */
-var remote = true;
+var remote = false;
 
 var itemsTable;
 var openPage;
@@ -58,7 +58,7 @@ function clearFilters(collapse) {
   if (collapse) $sb.hide();
 }
 
-/* ---------- local XLSX → GViz-like ---------- */
+/* ---------- local XLSX â GViz-like ---------- */
 function sheetToGViz(ws) {
   const aoa = XLSX.utils.sheet_to_json(ws, { header: 1, blankrows: false, defval: null });
   if (!aoa.length) return { cols: [], rows: [] };
@@ -530,7 +530,7 @@ function itemsDataTable(itemsJsonData) {
           });
         });
       
-      // hero → modal by ID
+      // hero â modal by ID
       var heroFigure = $('.hero').attr('item');
       if (heroFigure) {
         api.rows().every(function () {
